@@ -1,0 +1,661 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Hind Siliguri", "Noto Sans Bengali", sans-serif;
+  overflow-x: hidden;
+}
+
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(rgba(10, 5, 0, 0.6), rgba(20, 10, 5, 0.7)),
+    url("./background.jpg") center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 215, 0, 0.02) 2px,
+    rgba(255, 215, 0, 0.02) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Remove the casino shimmer effect */
+.app-container::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: transparent; /* Changed from glow effect to transparent */
+  animation: none; /* Remove animation */
+  pointer-events: none;
+}
+
+/* Remove the shimmer animation */
+@keyframes casinoShimmer {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(5%, 5%) rotate(2deg);
+  }
+  50% {
+    transform: translate(0, 10%) rotate(0deg);
+  }
+  75% {
+    transform: translate(-5%, 5%) rotate(-2deg);
+  }
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Make content-wrapper transparent and remove glows */
+.content-wrapper {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(15, 5, 0, 0.4); /* More transparent */
+  border: 2px solid #d4af37; /* Thinner border */
+  border-radius: 20px;
+  padding: 30px 25px;
+  /* Removed all glow shadows */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); /* Simple shadow only */
+  backdrop-filter: blur(2px); /* Reduced blur */
+  position: relative;
+}
+
+/* Remove the border glow animation */
+.content-wrapper::before {
+  content: none; /* Remove the glowing border */
+}
+
+@keyframes borderGlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Page 1 Styles */
+.welcome-text {
+  font-size: 22px;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Simpler shadow */
+}
+
+.welcome-text .bold {
+  font-weight: 700;
+  color: #ffd700;
+  font-size: 26px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.form-section {
+  margin-bottom: 25px;
+}
+
+.input-label {
+  display: block;
+  color: #f5f5f5;
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.text-input {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 16px;
+  border: 2px solid #d4af37;
+  border-radius: 12px;
+  background: rgba(20, 10, 5, 0.6); /* More transparent */
+  color: #ffffff;
+  transition: all 0.3s ease;
+  font-family: "Hind Siliguri", sans-serif;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  background: rgba(30, 15, 5, 0.7);
+}
+
+.text-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.offers-section {
+  margin: 30px 0;
+}
+
+.offers-title {
+  font-size: 20px;
+  color: #ffd700;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  background: rgba(30, 15, 5, 0.5); /* More transparent */
+  border: 2px solid #8b6914;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.radio-option::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 215, 0, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.radio-option:hover::before {
+  left: 100%;
+}
+
+.radio-option:hover {
+  background: rgba(40, 20, 5, 0.7);
+  border-color: #d4af37;
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.radio-option input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  cursor: pointer;
+  accent-color: #ffd700;
+}
+
+.radio-text {
+  color: #f5f5f5;
+  font-size: 16px;
+  flex: 1;
+}
+
+.bonus-text {
+  font-size: 17.5px;
+  font-weight: 800;
+  color: #ffd700;
+  /* Removed the gradient animation */
+  background: transparent;
+  -webkit-text-fill-color: #ffd700;
+  filter: none;
+  position: relative;
+}
+
+@keyframes goldShine {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.deposit-button {
+  width: 100%;
+  padding: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a0a0a;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ff8c00 100%);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-family: "Hind Siliguri", sans-serif;
+  margin-top: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Remove the button shine effect */
+.deposit-button::before {
+  content: none;
+}
+
+@keyframes buttonShine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+.deposit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.deposit-button:active {
+  transform: translateY(-1px);
+}
+
+/* Page 2 Styles */
+.bundle-display {
+  background: rgba(255, 215, 0, 0.1);
+  border: 2px solid #d4af37;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.selected-bundle {
+  font-size: 18px;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+.provider-section {
+  margin-bottom: 25px;
+}
+
+.provider-label {
+  display: block;
+  color: #f5f5f5;
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.provider-options {
+  display: flex;
+  gap: 12px;
+}
+
+.provider-option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(30, 15, 5, 0.5);
+  border: 2px solid #8b6914;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.provider-option.active {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: #ffd700;
+}
+
+.provider-option:hover {
+  border-color: #d4af37;
+  transform: translateY(-2px);
+}
+
+.provider-option input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  cursor: pointer;
+  accent-color: #ffd700;
+}
+
+.provider-name {
+  color: #f5f5f5;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.wallet-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.wallet-section {
+  grid-column: 1 / 2;
+}
+
+.wallet-label {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffd700;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.wallet-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  background: rgba(20, 10, 5, 0.6);
+  border: 2px solid #d4af37;
+  border-radius: 12px;
+  min-height: 100px;
+}
+
+.wallet-number {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffd700;
+  letter-spacing: 1px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a0a0a;
+  background: linear-gradient(135deg, #d4af37, #ffd700);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Hind Siliguri", sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.copy-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.provider-image-section {
+  grid-column: 2 / 3;
+}
+
+.provider-image-label {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffd700;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.provider-image-box {
+  padding: 10px;
+  background: rgba(20, 10, 5, 0.6);
+  border: 2px solid #d4af37;
+  border-radius: 12px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.provider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.provider-placeholder {
+  color: #ffd700;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.required {
+  color: #ff4444;
+  font-weight: 700;
+}
+
+.confirm-button {
+  width: 100%;
+  padding: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a0a0a;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ff8c00 100%);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-family: "Hind Siliguri", sans-serif;
+  margin-top: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Remove the confirm button shine effect */
+.confirm-button::before {
+  content: none;
+}
+
+.confirm-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.confirm-button:active {
+  transform: translateY(-1px);
+}
+
+/* Popup Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.popup {
+  background: linear-gradient(135deg, #2d1810, #1a0a0a);
+  border: 2px solid #ffd700;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+  animation: popupSlide 0.4s ease;
+  max-width: 90%;
+}
+
+@keyframes popupSlide {
+  from {
+    transform: scale(0.8) translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.popup-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: #1a0a0a;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.popup-text {
+  font-size: 22px;
+  color: #ffd700;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .content-wrapper {
+    padding: 25px 20px;
+  }
+
+  .welcome-text {
+    font-size: 20px;
+  }
+
+  .welcome-text .bold {
+    font-size: 24px;
+  }
+
+  .radio-text {
+    font-size: 15px;
+  }
+
+  .wallet-container {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 10px;
+  }
+
+  .wallet-label,
+  .provider-image-label {
+    font-size: 14px;
+  }
+
+  .wallet-number {
+    font-size: 15px;
+  }
+
+  .copy-button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .provider-image {
+    max-height: 60px;
+  }
+
+  .deposit-button,
+  .confirm-button {
+    font-size: 18px;
+    padding: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  .content-wrapper {
+    padding: 40px 35px;
+  }
+
+  .welcome-text {
+    font-size: 24px;
+  }
+
+  .welcome-text .bold {
+    font-size: 28px;
+  }
+}
+
+/* Desktop optimization */
+@media (min-width: 1024px) {
+  .content-wrapper {
+    padding: 50px 45px;
+    max-width: 600px;
+  }
+
+  .radio-option:hover {
+    transform: translateX(10px);
+  }
+
+  .wallet-container {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
