@@ -12,8 +12,7 @@ body {
 
 .app-container {
   min-height: 100vh;
-  /* Updated the url to point to your local background.jpg */
-  background: linear-gradient(rgba(10, 5, 0, 0.85), rgba(20, 10, 5, 0.9)),
+  background: linear-gradient(rgba(10, 5, 0, 0.6), rgba(20, 10, 5, 0.7)),
     url("./background.jpg") center/cover no-repeat;
   position: relative;
   overflow: hidden;
@@ -30,13 +29,14 @@ body {
     0deg,
     transparent,
     transparent 2px,
-    rgba(255, 215, 0, 0.03) 2px,
-    rgba(255, 215, 0, 0.03) 4px
+    rgba(255, 215, 0, 0.02) 2px,
+    rgba(255, 215, 0, 0.02) 4px
   );
   pointer-events: none;
   z-index: 0;
 }
 
+/* Remove the casino shimmer effect */
 .app-container::after {
   content: "";
   position: absolute;
@@ -44,21 +44,12 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(
-      circle at 20% 50%,
-      rgba(255, 215, 0, 0.15) 0%,
-      transparent 40%
-    ),
-    radial-gradient(circle at 80% 80%, rgba(255, 0, 0, 0.1) 0%, transparent 40%),
-    radial-gradient(
-      circle at 40% 20%,
-      rgba(255, 193, 7, 0.12) 0%,
-      transparent 40%
-    );
-  animation: casinoShimmer 20s ease-in-out infinite;
+  background: transparent; /* Changed from glow effect to transparent */
+  animation: none; /* Remove animation */
   pointer-events: none;
 }
 
+/* Remove the shimmer animation */
 @keyframes casinoShimmer {
   0%,
   100% {
@@ -85,32 +76,23 @@ body {
   z-index: 1;
 }
 
+/* Make content-wrapper transparent and remove glows */
 .content-wrapper {
   width: 100%;
   max-width: 500px;
-  background: rgba(15, 5, 0, 0.92);
-  border: 3px solid #d4af37;
+  background: rgba(15, 5, 0, 0.4); /* More transparent */
+  border: 2px solid #d4af37; /* Thinner border */
   border-radius: 20px;
   padding: 30px 25px;
-  box-shadow: 0 0 40px rgba(212, 175, 55, 0.4), 0 0 80px rgba(255, 215, 0, 0.2),
-    inset 0 0 30px rgba(255, 215, 0, 0.05), 0 10px 50px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(15px);
+  /* Removed all glow shadows */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); /* Simple shadow only */
+  backdrop-filter: blur(2px); /* Reduced blur */
   position: relative;
 }
 
+/* Remove the border glow animation */
 .content-wrapper::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, #ffd700, #ff4500, #ffd700, #ff4500);
-  background-size: 300% 300%;
-  border-radius: 20px;
-  z-index: -1;
-  opacity: 0.3;
-  animation: borderGlow 4s ease infinite;
+  content: none; /* Remove the glowing border */
 }
 
 @keyframes borderGlow {
@@ -130,14 +112,14 @@ body {
   text-align: center;
   margin-bottom: 30px;
   line-height: 1.6;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Simpler shadow */
 }
 
 .welcome-text .bold {
   font-weight: 700;
   color: #ffd700;
   font-size: 26px;
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.4);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .form-section {
@@ -150,7 +132,7 @@ body {
   font-size: 16px;
   margin-bottom: 10px;
   font-weight: 500;
-  text-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .text-input {
@@ -159,7 +141,7 @@ body {
   font-size: 16px;
   border: 2px solid #d4af37;
   border-radius: 12px;
-  background: rgba(20, 10, 5, 0.8);
+  background: rgba(20, 10, 5, 0.6); /* More transparent */
   color: #ffffff;
   transition: all 0.3s ease;
   font-family: "Hind Siliguri", sans-serif;
@@ -168,9 +150,8 @@ body {
 .text-input:focus {
   outline: none;
   border-color: #ffd700;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5),
-    inset 0 0 10px rgba(255, 215, 0, 0.1);
-  background: rgba(30, 15, 5, 0.9);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  background: rgba(30, 15, 5, 0.7);
 }
 
 .text-input::placeholder {
@@ -187,7 +168,7 @@ body {
   margin-bottom: 20px;
   text-align: center;
   font-weight: 600;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   letter-spacing: 1px;
 }
 
@@ -201,7 +182,7 @@ body {
   display: flex;
   align-items: center;
   padding: 14px 16px;
-  background: rgba(30, 15, 5, 0.7);
+  background: rgba(30, 15, 5, 0.5); /* More transparent */
   border: 2px solid #8b6914;
   border-radius: 12px;
   cursor: pointer;
@@ -220,7 +201,7 @@ body {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 215, 0, 0.2),
+    rgba(255, 215, 0, 0.1),
     transparent
   );
   transition: left 0.5s ease;
@@ -231,10 +212,10 @@ body {
 }
 
 .radio-option:hover {
-  background: rgba(40, 20, 5, 0.9);
+  background: rgba(40, 20, 5, 0.7);
   border-color: #d4af37;
   transform: translateX(5px);
-  box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .radio-option input[type="radio"] {
@@ -255,14 +236,10 @@ body {
   font-size: 17.5px;
   font-weight: 800;
   color: #ffd700;
-  background: linear-gradient(45deg, #ffd700, #ffed4e, #ff8c00, #ffd700);
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: goldShine 3s ease-in-out infinite;
-  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8))
-    drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
+  /* Removed the gradient animation */
+  background: transparent;
+  -webkit-text-fill-color: #ffd700;
+  filter: none;
   position: relative;
 }
 
@@ -287,29 +264,16 @@ body {
   border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 25px rgba(255, 215, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 140, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   font-family: "Hind Siliguri", sans-serif;
   margin-top: 25px;
   position: relative;
   overflow: hidden;
 }
 
+/* Remove the button shine effect */
 .deposit-button::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
-  transform: rotate(45deg);
-  animation: buttonShine 3s infinite;
+  content: none;
 }
 
 @keyframes buttonShine {
@@ -323,8 +287,7 @@ body {
 
 .deposit-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 35px rgba(255, 215, 0, 0.7),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 140, 0, 0.5);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .deposit-button:active {
@@ -333,18 +296,13 @@ body {
 
 /* Page 2 Styles */
 .bundle-display {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 215, 0, 0.15),
-    rgba(255, 140, 0, 0.15)
-  );
+  background: rgba(255, 215, 0, 0.1);
   border: 2px solid #d4af37;
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 25px;
   text-align: center;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2),
-    inset 0 0 15px rgba(255, 215, 0, 0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .selected-bundle {
@@ -363,7 +321,7 @@ body {
   font-size: 16px;
   margin-bottom: 12px;
   font-weight: 500;
-  text-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .provider-options {
@@ -377,7 +335,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 12px;
-  background: rgba(30, 15, 5, 0.7);
+  background: rgba(30, 15, 5, 0.5);
   border: 2px solid #8b6914;
   border-radius: 12px;
   cursor: pointer;
@@ -385,9 +343,8 @@ body {
 }
 
 .provider-option.active {
-  background: rgba(255, 215, 0, 0.2);
+  background: rgba(255, 215, 0, 0.15);
   border-color: #ffd700;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
 }
 
 .provider-option:hover {
@@ -426,7 +383,7 @@ body {
   font-weight: 700;
   color: #ffd700;
   margin-bottom: 12px;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .wallet-box {
@@ -434,7 +391,7 @@ body {
   flex-direction: column;
   gap: 8px;
   padding: 14px;
-  background: rgba(20, 10, 5, 0.8);
+  background: rgba(20, 10, 5, 0.6);
   border: 2px solid #d4af37;
   border-radius: 12px;
   min-height: 100px;
@@ -463,11 +420,12 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: "Hind Siliguri", sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .copy-button:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .provider-image-section {
@@ -480,12 +438,12 @@ body {
   font-weight: 700;
   color: #ffd700;
   margin-bottom: 12px;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .provider-image-box {
   padding: 10px;
-  background: rgba(20, 10, 5, 0.8);
+  background: rgba(20, 10, 5, 0.6);
   border: 2px solid #d4af37;
   border-radius: 12px;
   min-height: 100px;
@@ -524,35 +482,21 @@ body {
   border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 25px rgba(255, 215, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 140, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   font-family: "Hind Siliguri", sans-serif;
   margin-top: 25px;
   position: relative;
   overflow: hidden;
 }
 
+/* Remove the confirm button shine effect */
 .confirm-button::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
-  transform: rotate(45deg);
-  animation: buttonShine 3s infinite;
+  content: none;
 }
 
 .confirm-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 35px rgba(255, 215, 0, 0.7),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 140, 0, 0.5);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .confirm-button:active {
@@ -586,12 +530,11 @@ body {
 
 .popup {
   background: linear-gradient(135deg, #2d1810, #1a0a0a);
-  border: 3px solid #ffd700;
+  border: 2px solid #ffd700;
   border-radius: 20px;
   padding: 40px 30px;
   text-align: center;
-  box-shadow: 0 0 50px rgba(255, 215, 0, 0.6), 0 0 100px rgba(255, 215, 0, 0.4),
-    inset 0 0 30px rgba(255, 215, 0, 0.1);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
   animation: popupSlide 0.4s ease;
   max-width: 90%;
 }
@@ -618,7 +561,7 @@ body {
   font-size: 40px;
   color: #1a0a0a;
   margin: 0 auto 20px;
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.7), 0 0 60px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   animation: pulse 1.5s ease-in-out infinite;
 }
 
@@ -626,11 +569,9 @@ body {
   0%,
   100% {
     transform: scale(1);
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
   }
   50% {
     transform: scale(1.1);
-    box-shadow: 0 0 50px rgba(255, 215, 0, 0.9);
   }
 }
 
@@ -638,7 +579,7 @@ body {
   font-size: 22px;
   color: #ffd700;
   font-weight: 600;
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Responsive Design */
