@@ -5,20 +5,11 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [playerID, setPlayerID] = useState("");
   const [selectedBundle, setSelectedBundle] = useState(null);
-  const [provider, setProvider] = useState("bkash");
+  const [walletProvider, setWalletProvider] = useState("bkash"); // Default to bkash
   const [trxID, setTrxID] = useState("");
   const [showPopup, setShowPopup] = useState(false);
 
-  const walletNumbers = {
-    bkash: "016XXXXXXXX",
-    nagad: "019XXXXXXXX",
-  };
-
-  const providerImages = {
-    bkash: "./bkash.png",
-    nagad: "./nagad.png",
-  };
-
+  // Bundle data
   const bundles = [
     { deposit: 500, bonus: 2750 },
     { deposit: 800, bonus: 4400 },
@@ -29,8 +20,97 @@ const App = () => {
     { deposit: 10000, bonus: 55000 },
   ];
 
+  // Wallet numbers by provider
+  const walletNumbers = {
+    bkash: "017XXXXXXX",
+    nagad: "019XXXXXXX",
+  };
+
+  // Get wallet number based on provider
+  const getWalletNumber = () => {
+    return walletNumbers[walletProvider] || walletNumbers.bkash;
+  };
+
+  // Get logo path based on provider
+  const getLogoPath = () => {
+    return walletProvider === "bkash" ? "/bkash.png" : "/nagad.png";
+  };
+
+  // Get provider box color based on provider
+  const getProviderBoxColor = () => {
+    return walletProvider === "bkash" ? "#c800a1" : "#f24f40";
+  };
+
+  // Get deposit amount from selected bundle
+  const getDepositAmount = () => {
+    if (selectedBundle !== null) {
+      return bundles[selectedBundle].deposit.toFixed(2);
+    }
+    return "100.00"; // Default fallback
+  };
+
   const formatNumber = (num) => {
     return num.toLocaleString("bn-BD");
+  };
+
+  // TRANSLATION DICTIONARY
+  const t = {
+    bn: {
+      doNotCashout: "কম বা বেশি ক্যাশআউট করবেন না",
+      warningMain: `আপনি যদি টাকার পরিমাণ পরিবর্তন করেন (BDT ${getDepositAmount()}), আপনি ক্রেডিট পেতে সক্ষম হবেন না।`,
+      walletNo: "Wallet No",
+      walletDesc:
+        walletProvider === "bkash"
+          ? "এই BKASH নাম্বারে শুধুমাত্র ক্যাশআউট গ্রহণ করা হয়"
+          : "এই NAGAD নাম্বারে শুধুমাত্র ক্যাশআউট গ্রহণ করা হয়",
+      walletProvider: "Wallet Provider",
+      depositName:
+        walletProvider === "bkash" ? "BKASH Deposit" : "NAGAD Deposit",
+      trxLabel: "ক্যাশআউটের TrxID নাম্বারটি লিখুন",
+      required: "(প্রয়োজন)",
+      placeholder: "TrxID অবশ্যই পূরণ করতে হবে!",
+      confirm: "নিশ্চিত",
+      warningTitle: "সতর্কতা:",
+      warningText1:
+        "লেনদেন আইডি সঠিকভাবে পূরণ করতে হবে, অন্যথায় স্কোর ব্যর্থ হবে!!",
+      warningText2:
+        walletProvider === "bkash"
+          ? "অনুগ্রহ করে নিশ্চিত হয়ে নিন যে আপনি BKASH deposit ওয়ালেট নাম্বারে ক্যাশ আউট করছেন। এই নাম্বারে অন্য কোন ওয়ালেট থেকে ক্যাশ আউট করলে সেই টাকা পাওয়ার কোন সম্ভাবনা নাই"
+          : "অনুগ্রহ করে নিশ্চিত হয়ে নিন যে আপনি NAGAD deposit ওয়ালেট নাম্বারে ক্যাশ আউট করছেন। এই নাম্বারে অন্য কোন ওয়ালেট থেকে ক্যাশ আউট করলে সেই টাকা পাওয়ার কোন সম্ভাবনা নাই",
+      payService: "SERVICE",
+    },
+    en: {
+      doNotCashout: "Do not cash out more or less",
+      warningMain: `If you change the amount (BDT ${getDepositAmount()}), you will not be able to receive credit.`,
+      walletNo: "Wallet No",
+      walletDesc:
+        walletProvider === "bkash"
+          ? "Only Cash Out is accepted on this BKASH number"
+          : "Only Cash Out is accepted on this NAGAD number",
+      walletProvider: "Wallet Provider",
+      depositName:
+        walletProvider === "bkash" ? "BKASH Deposit" : "NAGAD Deposit",
+      trxLabel: "Enter Cashout TrxID Number",
+      required: "(Required)",
+      placeholder: "TrxID must be filled!",
+      confirm: "Confirm",
+      warningTitle: "Warning:",
+      warningText1:
+        "Transaction ID must be filled correctly, otherwise the score will fail!!",
+      warningText2:
+        walletProvider === "bkash"
+          ? "Please ensure that you are cashing out to the BKASH deposit wallet number. If you cash out from any other wallet to this number, there is no possibility of receiving that money."
+          : "Please ensure that you are cashing out to the NAGAD deposit wallet number. If you cash out from any other wallet to this number, there is no possibility of receiving that money.",
+      payService: "SERVICE",
+    },
+  };
+
+  const [language, setLanguage] = useState("bn");
+  const text = t[language];
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(getWalletNumber());
+    alert("Number copied to clipboard!");
   };
 
   const handleDeposit = () => {
@@ -39,10 +119,6 @@ const App = () => {
     } else {
       alert("অনুগ্রহ করে সকল তথ্য পূরণ করুন");
     }
-  };
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(walletNumbers[provider]);
   };
 
   const handleSubmit = async () => {
@@ -59,22 +135,20 @@ const App = () => {
           bundles[selectedBundle].deposit
         } ডিপোজিটে বোনাস ${formatNumber(bundles[selectedBundle].bonus)}`,
         TrxID: trxID,
-        Provider: provider,
+        Provider: walletProvider,
         timestamp: new Date().toISOString(),
       };
 
       console.log("Saving to Firestore:", data);
 
-      // Show popup
       setShowPopup(true);
 
-      // Reset after 3 seconds
       setTimeout(() => {
         setShowPopup(false);
         setPage(1);
         setPlayerID("");
         setSelectedBundle(null);
-        setProvider("bkash");
+        setWalletProvider("bkash");
         setTrxID("");
       }, 3000);
     } catch (error) {
@@ -89,7 +163,7 @@ const App = () => {
         <div className="page page-1">
           <div className="content-wrapper">
             <h1 className="welcome-text">
-              <span className="bold">স্বাগতম</span>, মেগা বান্ডেল বোনাসের জন্য
+              <span className="bold">স্বাগতম,</span> মেগা বান্ডেল বোনাসের জন্য
               আপনাকে নির্বাচিত করা হয়েছে।
             </h1>
 
@@ -117,122 +191,159 @@ const App = () => {
                       checked={selectedBundle === index}
                       onChange={() => setSelectedBundle(index)}
                     />
-                    <span className="radio-text">
-                      {formatNumber(bundle.deposit)} ডিপোজিটে{" "}
+                    <div className="radio-content">
+                      <span className="radio-text">
+                        {formatNumber(bundle.deposit)} ডিপোজিটে
+                      </span>
+                      {/* This part will now glow */}
                       <span className="bonus-text">
                         বোনাস {formatNumber(bundle.bonus)}
                       </span>
-                    </span>
+                    </div>
                   </label>
                 ))}
               </div>
             </div>
 
+            {/* Wallet Provider Selection on Page 1 */}
+            <div className="form-section">
+              <label className="input-label">
+                ওয়ালেট প্রোভাইডার নির্বাচন করুন
+              </label>
+              <div className="provider-options">
+                <label className="provider-option">
+                  <input
+                    type="radio"
+                    name="provider"
+                    value="bkash"
+                    checked={walletProvider === "bkash"}
+                    onChange={() => setWalletProvider("bkash")}
+                  />
+                  <div className="provider-content">
+                    <img
+                      src="./bkash.png"
+                      alt="bKash"
+                      className="provider-logo"
+                    />
+                    <span className="provider-name">bKash</span>
+                  </div>
+                </label>
+                <label className="provider-option">
+                  <input
+                    type="radio"
+                    name="provider"
+                    value="nagad"
+                    checked={walletProvider === "nagad"}
+                    onChange={() => setWalletProvider("nagad")}
+                  />
+                  <div className="provider-content">
+                    <img
+                      src="./nagad.png"
+                      alt="Nagad"
+                      className="provider-logo"
+                    />
+                    <span className="provider-name">Nagad</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
             <button className="deposit-button" onClick={handleDeposit}>
-              ডিপোজিট করেন
+              ডিপোজিট করুন
             </button>
           </div>
         </div>
       ) : (
         <div className="page page-2">
-          <div className="content-wrapper">
-            <div className="bundle-display">
-              <h2 className="selected-bundle">
-                {formatNumber(bundles[selectedBundle].deposit)} ডিপোজিটে{" "}
-                <span className="bonus-text">
-                  বোনাস {formatNumber(bundles[selectedBundle].bonus)}
-                </span>
-              </h2>
-            </div>
-
-            <div className="provider-section">
-              <label className="provider-label">
-                পেমেন্ট প্রোভাইডার নির্বাচন করুন
-              </label>
-              <div className="provider-options">
-                <label
-                  className={`provider-option ${
-                    provider === "bkash" ? "active" : ""
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    name="provider"
-                    value="bkash"
-                    checked={provider === "bkash"}
-                    onChange={(e) => setProvider(e.target.value)}
-                  />
-                  <span className="provider-name">Bkash</span>
-                </label>
-                <label
-                  className={`provider-option ${
-                    provider === "nagad" ? "active" : ""
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    name="provider"
-                    value="nagad"
-                    checked={provider === "nagad"}
-                    onChange={(e) => setProvider(e.target.value)}
-                  />
-                  <span className="provider-name">Nagad</span>
-                </label>
-              </div>
-            </div>
-
-            <div className="wallet-container">
-              <div className="wallet-section">
-                <label className="wallet-label">Wallet No</label>
-                <div className="wallet-box">
-                  <span className="wallet-number">
-                    {walletNumbers[provider]}
-                  </span>
-                  <button className="copy-button" onClick={copyToClipboard}>
-                    কপি
-                  </button>
+          {/* Page 2 structure remains exactly as provided */}
+          <div className="payment-container">
+            <div className="header">
+              <div className="header-content">
+                <div className="amount-section">
+                  <h1>BDT {getDepositAmount()}</h1>
+                  <p>{text.doNotCashout}</p>
                 </div>
-              </div>
-
-              <div className="provider-image-section">
-                <label className="provider-image-label">Wallet Provider</label>
-                <div className="provider-image-box">
-                  <img
-                    src={providerImages[provider]}
-                    alt={provider}
-                    className="provider-image"
-                    onError={(e) => {
-                      e.target.style.display = "none";
-                      e.target.nextSibling.style.display = "flex";
-                    }}
-                  />
-                  <div
-                    className="provider-placeholder"
-                    style={{ display: "none" }}
-                  >
-                    {provider.toUpperCase()}
+                <div className="logo-section">
+                  <div className="service-tag">
+                    <span className="pay-badge">PAY</span>
+                    <span className="service-text">{text.payService}</span>
+                  </div>
+                  <div className="lang-switch">
+                    <button
+                      className={language === "en" ? "active" : ""}
+                      onClick={() => setLanguage("en")}
+                    >
+                      EN
+                    </button>
+                    <button
+                      className={language === "bn" ? "active" : ""}
+                      onClick={() => setLanguage("bn")}
+                    >
+                      বাং
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="form-section">
-              <label className="input-label">
-                সেন্ড মানির নাম্বারটি অথবা সেন্ড মানি একাউন্টের নাম্বারটি লিখুন{" "}
-                <span className="required">(প্রয়োজন)</span>
-              </label>
-              <input
-                type="text"
-                className="text-input"
-                value={trxID}
-                onChange={(e) => setTrxID(e.target.value)}
-                placeholder="ট্রানজেকশন আইডি"
-              />
-            </div>
+            <div className="body-content">
+              <p className="main-warning">{text.warningMain}</p>
 
-            <button className="confirm-button" onClick={handleSubmit}>
-              নিশ্চিত
-            </button>
+              <div className="info-grid">
+                <div className="info-block wallet-section">
+                  <label className="input-label">
+                    <div className="walletNo">
+                      {text.walletNo}
+                      <span className="red">*</span>
+                    </div>
+                  </label>
+                  <p className="sub-label">{text.walletDesc}</p>
+
+                  <div className="copy-box">
+                    <span>{getWalletNumber()}</span>
+                    <button className="copy-btn" onClick={handleCopy}>
+                      <img src="/copy.png" alt="Copy" />
+                    </button>
+                  </div>
+                </div>
+                <div className="info-block provider-section">
+                  <label className="input-label">{text.walletProvider}</label>
+                  <div
+                    className="provider-box"
+                    style={{ backgroundColor: getProviderBoxColor() }}
+                  >
+                    <div className="logo-circle">
+                      <img src={getLogoPath()} alt={walletProvider} />
+                    </div>
+                    <span>{text.depositName}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="trx-section">
+                <label className="input-label">
+                  {text.trxLabel}
+                  <span className="red">{text.required}</span>
+                </label>
+                <input
+                  type="text"
+                  className="trx-input"
+                  placeholder={text.placeholder}
+                  value={trxID}
+                  onChange={(e) => setTrxID(e.target.value)}
+                />
+              </div>
+
+              <button className="confirm-btn" onClick={handleSubmit}>
+                {text.confirm}
+              </button>
+
+              <div className="footer-warning">
+                <span>{text.warningTitle}</span>
+                <p className="red-text">{text.warningText1}</p>
+                <p className="gray-text">{text.warningText2}</p>
+              </div>
+            </div>
           </div>
         </div>
       )}
