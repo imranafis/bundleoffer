@@ -686,7 +686,7 @@ body {
   font-size: 16px;
   letter-spacing: 0.8px;
   margin-bottom: 10px;
-  /* line-height: 1.6; */
+  line-height: 1.5;
 }
 .info-grid {
   display: grid;
@@ -736,13 +736,13 @@ body {
 .copy-btn img {
   display: block;
   cursor: pointer;
-  height: 22px;
-  width: 22px;
+  height: 25px;
+  width: 25px;
 }
 .provider-box {
   background-color: var(--provider-color, #c800a1);
   color: white;
-  padding: 5px 15px;
+  padding: 8px 15px;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -829,13 +829,13 @@ body {
 }
 .red-text {
   color: #e63946;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
   margin-bottom: 5px;
 }
 .gray-text {
   color: #888;
-  font-size: 11px;
+  font-size: 10.5px;
   line-height: 1.4;
   opacity: 0.6;
 }
