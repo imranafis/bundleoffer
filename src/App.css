@@ -602,7 +602,7 @@ body {
 .header {
   background-color: #015f38;
   color: white;
-  padding: 10px 15px;
+  padding: 10px 15px 5px 15px;
 }
 .header-content {
   display: flex;
@@ -610,7 +610,7 @@ body {
   align-items: center;
 }
 .amount-section h1 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   /* margin-bottom: 8px; */
   color: white;
@@ -683,10 +683,10 @@ body {
 .main-warning {
   color: #e63946;
   font-weight: 700;
-  font-size: 17px;
-  margin-top: 0;
-
-  line-height: 1.6;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  margin-bottom: 10px;
+  /* line-height: 1.6; */
 }
 .info-grid {
   display: grid;
@@ -720,7 +720,7 @@ body {
   color: #333;
 }
 .copy-box span {
-  font-size: 18px;
+  font-size: 16px;
   padding: 8px;
   font-weight: 550;
   margin-left: 20px;
@@ -735,8 +735,8 @@ body {
 .copy-btn img {
   display: block;
   cursor: pointer;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
 }
 .provider-box {
   background-color: var(--provider-color, #c800a1);
@@ -768,14 +768,17 @@ body {
   margin-top: 5px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
+
 .info-grid .sub-label {
-  font-size: 18px;
+  font-size: 17px;
   letter-spacing: 1px;
   font-weight: 500;
 }
+
 .trx-section {
   margin-bottom: 20px;
 }
+
 .trx-section .input-label {
   font-size: 16px;
   letter-spacing: 1px;
@@ -800,13 +803,13 @@ body {
 .confirm-btn {
   display: block;
   margin: 0 auto 20px auto;
-  padding: 15px 50px;
+  padding: 15px 60px;
   background-color: #fff;
   border: 1px solid #333;
   color: #000;
   border-radius: 15px;
   font-size: 16px;
-  font-weight: 900;
+  font-weight: 500;
   cursor: pointer;
   transition: background 0.2s;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
