@@ -66,7 +66,7 @@ const App = () => {
       depositName:
         walletProvider === "bkash" ? "BKASH Deposit" : "NAGAD Deposit",
       trxLabel: "ক্যাশআউটের TrxID নাম্বারটি লিখুন",
-      required: "(প্রয়োজন)",
+      required: " (প্রয়োজন)",
       placeholder: "TrxID অবশ্যই পূরণ করতে হবে!",
       confirm: "নিশ্চিত",
       warningTitle: "সতর্কতা:",
