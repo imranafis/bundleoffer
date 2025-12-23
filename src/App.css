@@ -685,7 +685,7 @@ body {
   font-weight: 700;
   font-size: 17px;
   margin-top: 0;
-  margin-bottom: 10px;
+
   line-height: 1.6;
 }
 .info-grid {
@@ -698,7 +698,7 @@ body {
   display: block;
   font-weight: 700;
   font-size: 16px;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   color: #000;
 }
 .sub-label {
@@ -735,8 +735,8 @@ body {
 .copy-btn img {
   display: block;
   cursor: pointer;
-  height: 35px;
-  width: 35px;
+  height: 15px;
+  width: 15px;
 }
 .provider-box {
   background-color: var(--provider-color, #c800a1);
@@ -774,21 +774,21 @@ body {
   font-weight: 500;
 }
 .trx-section {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .trx-section .input-label {
   font-size: 16px;
   letter-spacing: 1px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 800;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   color: #000;
 }
 .trx-input {
   width: 100%;
   padding: 15px;
   font-size: 16px;
-  border: 3px solid #ff0000;
+  border: 2px solid #ff0000;
   border-radius: 5px;
   outline: none;
   background-color: #ffffff;
