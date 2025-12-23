@@ -359,14 +359,17 @@ body {
   background: linear-gradient(to right, #ffd700, #ffed4e, #ffd700);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: goldenGlow 2s ease-in-out infinite alternate,
+  animation: textPulse 3s ease-in-out infinite;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 237, 78, 0.6),
+    0 0 45px rgba(255, 215, 0, 0.4);
+  /* animation: goldenGlow 2s ease-in-out infinite alternate,
     textPulse 3s ease-in-out infinite;
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3); */
   position: relative;
   padding-right: 5px;
 }
 
-@keyframes goldenGlow {
+/* @keyframes goldenGlow {
   0% {
     text-shadow: 0 0 5px rgba(255, 215, 0, 0.5), 0 0 10px rgba(255, 215, 0, 0.3);
   }
@@ -374,7 +377,7 @@ body {
     text-shadow: 0 0 15px rgba(255, 215, 0, 0.8),
       0 0 30px rgba(255, 237, 78, 0.6), 0 0 45px rgba(255, 215, 0, 0.4);
   }
-}
+} */
 
 @keyframes textPulse {
   0%,
