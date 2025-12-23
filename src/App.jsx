@@ -14,7 +14,6 @@ const App = () => {
     { deposit: 500, bonus: 2750 },
     { deposit: 800, bonus: 4400 },
     { deposit: 1000, bonus: 5500 },
-    { deposit: 2000, bonus: 11000 },
     { deposit: 3000, bonus: 16500 },
     { deposit: 5000, bonus: 27500 },
     { deposit: 10000, bonus: 55000 },
@@ -33,7 +32,7 @@ const App = () => {
 
   // Get logo path based on provider
   const getLogoPath = () => {
-    return walletProvider === "bkash" ? "/bkash.png" : "/nagad.png";
+    return walletProvider === "bkash" ? "./bkash.png" : "./nagad.png";
   };
 
   // Get provider box color based on provider
@@ -220,11 +219,7 @@ const App = () => {
                     onChange={() => setWalletProvider("bkash")}
                   />
                   <div className="provider-content">
-                    <img
-                      src="./bkash.png"
-                      alt="bKash"
-                      className="provider-logo"
-                    />
+                    <img src="./bkash.png" className="provider-logo" />
                     <span className="provider-name">bKash</span>
                   </div>
                 </label>
@@ -237,11 +232,7 @@ const App = () => {
                     onChange={() => setWalletProvider("nagad")}
                   />
                   <div className="provider-content">
-                    <img
-                      src="./nagad.png"
-                      alt="Nagad"
-                      className="provider-logo"
-                    />
+                    <img src="./nagad.png" className="provider-logo" />
                     <span className="provider-name">Nagad</span>
                   </div>
                 </label>
@@ -302,7 +293,7 @@ const App = () => {
                   <div className="copy-box">
                     <span>{getWalletNumber()}</span>
                     <button className="copy-btn" onClick={handleCopy}>
-                      <img src="/copy.png" alt="Copy" />
+                      <img src="./copy.png" alt="Copy" />
                     </button>
                   </div>
                 </div>

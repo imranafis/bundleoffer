@@ -181,7 +181,7 @@ body {
 .input-label {
   display: block;
   color: #ffedcc;
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 8px;
   font-weight: 600;
   padding-left: 5px;
@@ -389,7 +389,7 @@ body {
 .provider-options {
   display: flex;
   gap: 15px;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .provider-option {
@@ -440,9 +440,15 @@ body {
 }
 
 .provider-option input[type="radio"] {
+  display: none;
   accent-color: #ffd700;
   margin-right: 10px;
   transform: scale(1.2);
+}
+
+.provider-content {
+  display: flex;
+  align-items: center;
 }
 
 .provider-content img {
@@ -455,7 +461,7 @@ body {
 .provider-name {
   color: #fff;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 0.5px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
@@ -530,11 +536,11 @@ body {
 @media (max-width: 480px) {
   .page-1 .content-wrapper {
     padding: 25px 20px;
-    margin: 15px;
+    margin: 10px;
   }
 
   .welcome-text {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .welcome-text .bold {
@@ -547,7 +553,7 @@ body {
 
   .radio-text,
   .bonus-text {
-    font-size: 15px;
+    font-size: 18px;
   }
 
   .deposit-button {
