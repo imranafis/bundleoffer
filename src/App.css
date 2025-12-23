@@ -771,7 +771,7 @@ body {
 }
 
 .info-grid .sub-label {
-  font-size: 15px;
+  font-size: 16px;
   padding-right: 15px;
   letter-spacing: 1px;
   font-weight: 500;
@@ -805,7 +805,7 @@ body {
 .confirm-btn {
   display: block;
   margin: 0 auto 20px auto;
-  padding: 15px 60px;
+  padding: 14px 60px;
   background-color: #fff;
   border: 1px solid #333;
   color: #000;
