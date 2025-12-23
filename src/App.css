@@ -72,17 +72,17 @@ body {
   padding: 30px 25px;
   position: relative;
   overflow: hidden;
-  animation: containerFloat 3s ease-in-out infinite alternate;
+  /* animation: containerFloat 3s ease-in-out infinite alternate; */
 }
 
-@keyframes containerFloat {
+/* @keyframes containerFloat {
   0% {
     transform: translateY(0px);
   }
   100% {
     transform: translateY(-5px);
   }
-}
+} */
 
 /* Gold Border Animation */
 .page-1 .content-wrapper::before {
@@ -102,10 +102,10 @@ body {
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  animation: borderGlow 3s linear infinite;
+  /* animation: borderGlow 3s linear infinite; */
   opacity: 0.7;
 }
-
+/* 
 @keyframes borderGlow {
   0% {
     background-position: 200% 0;
@@ -113,7 +113,7 @@ body {
   100% {
     background-position: -200% 0;
   }
-}
+} */
 
 /* Diamond Pattern Overlay */
 .page-1 .content-wrapper::after {
@@ -159,17 +159,17 @@ body {
   background: linear-gradient(to right, #ffd700, #ffed4e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: textShine 2s ease-in-out infinite alternate;
+  /* animation: textShine 2s ease-in-out infinite alternate; */
 }
 
-@keyframes textShine {
+/* @keyframes textShine {
   0% {
     filter: brightness(1);
   }
   100% {
     filter: brightness(1.2);
   }
-}
+} */
 
 /* Input Section */
 .form-section {
@@ -244,7 +244,7 @@ body {
   position: relative;
 }
 
-.offers-title::after {
+/* .offers-title::after {
   content: "🔥";
   position: absolute;
   right: 0;
@@ -252,8 +252,8 @@ body {
   margin-bottom: 5px;
   font-size: 25px;
   animation: fire 1.5s ease-in-out infinite;
-}
-
+} */
+/* 
 @keyframes fire {
   0%,
   100% {
@@ -262,7 +262,7 @@ body {
   50% {
     transform: scale(1.1);
   }
-}
+} */
 
 /* Radio Group - Single Column with Enhanced Design */
 .radio-group {
@@ -353,19 +353,18 @@ body {
 
 /* Bonus Text with Enhanced Glow */
 .bonus-text {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 900;
   background: linear-gradient(to right, #ffd700, #ffed4e, #ffd700);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: goldenGlow 2s ease-in-out infinite alternate,
-    textPulse 3s ease-in-out infinite;
+  animation: textPulse 3s ease-in-out infinite;
   text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
   position: relative;
   padding-right: 5px;
 }
 
-@keyframes goldenGlow {
+/* @keyframes goldenGlow {
   0% {
     text-shadow: 0 0 5px rgba(255, 215, 0, 0.5), 0 0 10px rgba(255, 215, 0, 0.3);
   }
@@ -373,7 +372,7 @@ body {
     text-shadow: 0 0 15px rgba(255, 215, 0, 0.8),
       0 0 30px rgba(255, 237, 78, 0.6), 0 0 45px rgba(255, 215, 0, 0.4);
   }
-}
+} */
 
 @keyframes textPulse {
   0%,
