@@ -714,6 +714,7 @@ body {
   background-color: #f1f3f4;
   padding: 10px 10px;
   border-radius: 4px;
+  margin-bottom: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -735,13 +736,13 @@ body {
 .copy-btn img {
   display: block;
   cursor: pointer;
-  height: 20px;
-  width: 20px;
+  height: 22px;
+  width: 22px;
 }
 .provider-box {
   background-color: var(--provider-color, #c800a1);
   color: white;
-  padding: 10px 15px;
+  padding: 5px 15px;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -770,7 +771,8 @@ body {
 }
 
 .info-grid .sub-label {
-  font-size: 17px;
+  font-size: 16px;
+  padding-right: 20px;
   letter-spacing: 1px;
   font-weight: 500;
 }
@@ -803,12 +805,12 @@ body {
 .confirm-btn {
   display: block;
   margin: 0 auto 20px auto;
-  padding: 15px 60px;
+  padding: 12px 60px;
   background-color: #fff;
   border: 1px solid #333;
   color: #000;
   border-radius: 15px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s;
@@ -820,20 +822,20 @@ body {
   transform: none;
 }
 .footer-warning span {
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 900;
   margin-bottom: 5px;
   color: #000;
 }
 .red-text {
   color: #e63946;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 600;
   margin-bottom: 5px;
 }
 .gray-text {
   color: #888;
-  font-size: 13px;
+  font-size: 11px;
   line-height: 1.4;
   opacity: 0.6;
 }
@@ -851,9 +853,11 @@ body {
     flex-direction: column;
     gap: 0px;
   }
+
   .provider-section {
     order: -1;
   }
+
   .provider-section .input-label {
     display: none;
   }
