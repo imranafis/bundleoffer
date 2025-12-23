@@ -602,7 +602,7 @@ body {
 .header {
   background-color: #015f38;
   color: white;
-  padding: 10px 20px;
+  padding: 10px 15px;
 }
 .header-content {
   display: flex;
@@ -612,7 +612,7 @@ body {
 .amount-section h1 {
   font-size: 22px;
   font-weight: 700;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
   color: white;
 }
 .amount-section p {
@@ -684,7 +684,7 @@ body {
   color: #e63946;
   font-weight: 700;
   font-size: 17px;
-  margin-top: 5px;
+  margin-top: 0;
   margin-bottom: 10px;
   line-height: 1.6;
 }
@@ -712,7 +712,7 @@ body {
 }
 .copy-box {
   background-color: #f1f3f4;
-  padding: 12px 15px;
+  padding: 10px 10px;
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
@@ -720,7 +720,7 @@ body {
   color: #333;
 }
 .copy-box span {
-  font-size: 21px;
+  font-size: 18px;
   padding: 8px;
   font-weight: 550;
   margin-left: 20px;
@@ -741,7 +741,7 @@ body {
 .provider-box {
   background-color: var(--provider-color, #c800a1);
   color: white;
-  padding: 12px 15px;
+  padding: 10px 15px;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -778,7 +778,7 @@ body {
 }
 .trx-section .input-label {
   font-size: 16px;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 800;
   margin-bottom: 25px;
@@ -786,7 +786,7 @@ body {
 }
 .trx-input {
   width: 100%;
-  padding: 20px;
+  padding: 15px;
   font-size: 16px;
   border: 3px solid #ff0000;
   border-radius: 5px;
@@ -800,7 +800,7 @@ body {
 .confirm-btn {
   display: block;
   margin: 0 auto 20px auto;
-  padding: 18px 70px;
+  padding: 15px 50px;
   background-color: #fff;
   border: 1px solid #333;
   color: #000;
